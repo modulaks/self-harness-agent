@@ -1,0 +1,5 @@
+{"id": "smoke-echo", "prompt": "Powtórz dokładnie: PING", "verifier": {"type": "answer_contains", "value": "PING"}, "protected": true}
+{"id": "file-write-basic", "prompt": "Utwórz plik hello.txt z treścią 'witaj świecie' i potwierdź, że istnieje.", "verifier": {"type": "file_contains", "path": "hello.txt", "value": "witaj"}, "protected": true}
+{"id": "file-read-count", "prompt": "W sandboksie jest plik dane.csv. Policz, ile ma wierszy danych (bez nagłówka) i odpowiedz samą liczbą.", "setup_files": [{"path": "dane.csv", "content": "id,val\n1,a\n2,b\n3,c\n4,d\n"}], "verifier": {"type": "answer_regex", "value": "\\b4\\b"}, "protected": true}
+{"id": "python-compute", "prompt": "Oblicz sumę liczb pierwszych mniejszych od 100 uruchamiając kod Pythona i podaj wynik.", "verifier": {"type": "answer_contains", "value": "1060"}}
+{"id": "multi-step-transform", "prompt": "Przeczytaj plik lista.txt, posortuj wiersze alfabetycznie i zapisz wynik do posortowane.txt.", "setup_files": [{"path": "lista.txt", "content": "gruszka\njabłko\nbanan\n"}], "verifier": {"type": "file_contains", "path": "posortowane.txt", "value": "banan\ngruszka"}}

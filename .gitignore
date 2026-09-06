@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/*.sqlite
+data/*.sqlite-journal
+data/validations/
+data/approvals/
+data/STOP
+sandbox/*
+!sandbox/.gitkeep
+.harness_unlock
+.pytest_cache/

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "self-harness-agent"
+version = "0.1.0"
+description = "Long-running self-improving LLM agent (memory -> harness -> weights)"
+requires-python = ">=3.11"
+dependencies = [
+    "langgraph>=0.2",
+    "langchain-core>=0.3",
+    "langchain-ollama>=0.2",
+    "pydantic>=2",
+    "pyyaml>=6",
+    "python-dotenv>=1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+anthropic = ["langchain-anthropic>=0.3"]
+postgres = ["psycopg[binary]>=3", "pgvector>=0.3"]
+
+[tool.setuptools]
+packages = ["agent", "learning", "eval", "harness", "scripts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,34 @@
+# Harness jako dane. Zmiany TYLKO przez learning/promote.py.
+version: 0.1.0
+
+executor:
+  provider: ollama
+  name: qwen3:8b
+  temperature: 0.2
+
+critic:
+  provider: ollama
+  name: qwen3:32b
+  temperature: 0.1
+
+system_prompt: |
+  Jesteś agentem wykonującym zadania w sandboksie plikowym. Działasz krok po kroku:
+  najpierw sprawdź stan (list_dir, read_file), potem działaj (write_file, run_python),
+  na końcu zweryfikuj wynik i podaj krótką odpowiedź końcową.
+  Nie zgaduj zawartości plików, czytaj je. Nie wykonuj więcej kroków niż trzeba.
+
+tools:
+  - list_dir
+  - read_file
+  - write_file
+  - run_python
+
+policies:
+  max_steps: 20
+  tool_timeout_s: 60
+  max_output_chars: 6000
+
+memory:
+  skills_dir: memory/skills
+  facts_file: memory/facts.jsonl
+  inject_skills: true
